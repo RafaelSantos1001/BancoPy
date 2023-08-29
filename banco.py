@@ -93,12 +93,12 @@ def efetuar_deposito() -> None:
     if len(contas) > 0:
         numero: int = int(input('Informe o número da sua conta: '))
 
-        conta: Conta = buscar_conta_por_numero()
+        conta: Conta = buscar_conta_por_numero(numero)
 
         if conta:
-            valor: float = float(input('Informe o valor do saque: '))
+            valor: float = float(input('Informe o valor do depósito: '))
 
-            conta.sacar(valor)
+            conta.depositar(valor)
         else:
             print(f'Não foi encontrada a conta com número {numero}')
 
@@ -110,16 +110,24 @@ def efetuar_deposito() -> None:
 
 def efetuar_transferencia() -> None:
     if len(contas) > 0:
-        numero: int = int(input('Informe o número da sua conta: '))
+        numero_o: int = int(input('Informe o número da sua conta: '))
 
-        conta: Conta = buscar_conta_por_numero()
+        conta_o: Conta = buscar_conta_por_numero(numero_o)
 
-        if conta:
-            valor: float = float(input('Informe o valor do saque: '))
+        if conta_o:
+            numero_d: int = int(input('Informe o número da conta destino: '))
 
-            conta.sacar(valor)
+            conta_d: Conta = buscar_conta_por_numero(numero_d)
+
+            if conta_d:
+                valor: float = float(input('Informe o valor da transferência: '))
+
+                conta_o.transferir(conta_d, valor)
+            else:
+                print(f'A conta destino com número {numero_d} não foi encontrada.')
+
         else:
-            print(f'Não foi encontrada a conta com número {numero}')
+            print(f'A sua conta com {numero_o} não foi encontrada.')
 
     else:
         print('Ainda não existem contas cadastradas.')
@@ -129,16 +137,12 @@ def efetuar_transferencia() -> None:
 
 def listar_contas() -> None:
     if len(contas) > 0:
-        numero: int = int(input('Informe o número da sua conta: '))
+        print('Listagem de contas')
 
-        conta: Conta = buscar_conta_por_numero()
-
-        if conta:
-            valor: float = float(input('Informe o valor do saque: '))
-
-            conta.sacar(valor)
-        else:
-            print(f'Não foi encontrada a conta com número {numero}')
+        for conta in contas:
+            print(conta)
+            print('-----------------------')
+            sleep(1)
 
     else:
         print('Ainda não existem contas cadastradas.')
@@ -146,23 +150,14 @@ def listar_contas() -> None:
     menu()
 
 
-def buscar_conta_por_numero(numero: int) -> None:
+def buscar_conta_por_numero(numero: int) -> Conta:
+    c: Conta = None
+
     if len(contas) > 0:
-        numero: int = int(input('Informe o número da sua conta: '))
-
-        conta: Conta = buscar_conta_por_numero()
-
-        if conta:
-            valor: float = float(input('Informe o valor do saque: '))
-
-            conta.sacar(valor)
-        else:
-            print(f'Não foi encontrada a conta com número {numero}')
-
-    else:
-        print('Ainda não existem contas cadastradas.')
-    sleep(2)
-    menu()
+        for conta in contas:
+            if conta.numero == numero:
+                c = conta
+    return c
 
 
 if __name__ == '__main__':
