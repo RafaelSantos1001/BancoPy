@@ -90,19 +90,79 @@ def efetuar_saque() -> None:
     menu()
 
 def efetuar_deposito() -> None:
-    pass
+    if len(contas) > 0:
+        numero: int = int(input('Informe o número da sua conta: '))
+
+        conta: Conta = buscar_conta_por_numero()
+
+        if conta:
+            valor: float = float(input('Informe o valor do saque: '))
+
+            conta.sacar(valor)
+        else:
+            print(f'Não foi encontrada a conta com número {numero}')
+
+    else:
+        print('Ainda não existem contas cadastradas.')
+    sleep(2)
+    menu()
 
 
 def efetuar_transferencia() -> None:
-    pass
+    if len(contas) > 0:
+        numero: int = int(input('Informe o número da sua conta: '))
+
+        conta: Conta = buscar_conta_por_numero()
+
+        if conta:
+            valor: float = float(input('Informe o valor do saque: '))
+
+            conta.sacar(valor)
+        else:
+            print(f'Não foi encontrada a conta com número {numero}')
+
+    else:
+        print('Ainda não existem contas cadastradas.')
+    sleep(2)
+    menu()
 
 
 def listar_contas() -> None:
-    pass
+    if len(contas) > 0:
+        numero: int = int(input('Informe o número da sua conta: '))
+
+        conta: Conta = buscar_conta_por_numero()
+
+        if conta:
+            valor: float = float(input('Informe o valor do saque: '))
+
+            conta.sacar(valor)
+        else:
+            print(f'Não foi encontrada a conta com número {numero}')
+
+    else:
+        print('Ainda não existem contas cadastradas.')
+    sleep(2)
+    menu()
 
 
 def buscar_conta_por_numero(numero: int) -> None:
-    pass
+    if len(contas) > 0:
+        numero: int = int(input('Informe o número da sua conta: '))
+
+        conta: Conta = buscar_conta_por_numero()
+
+        if conta:
+            valor: float = float(input('Informe o valor do saque: '))
+
+            conta.sacar(valor)
+        else:
+            print(f'Não foi encontrada a conta com número {numero}')
+
+    else:
+        print('Ainda não existem contas cadastradas.')
+    sleep(2)
+    menu()
 
 
 if __name__ == '__main__':
