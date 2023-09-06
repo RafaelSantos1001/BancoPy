@@ -75,7 +75,7 @@ def efetuar_saque() -> None:
     if len(contas) > 0:
         numero: int = int(input('Informe o número da sua conta: '))
 
-        conta: Conta = buscar_conta_por_numero()
+        conta: Conta = buscar_conta_por_numero(numero)
 
         if conta:
             valor: float = float(input('Informe o valor do saque: '))
